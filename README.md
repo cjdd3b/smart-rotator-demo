@@ -1,43 +1,73 @@
-SMART ROTATOR EXPERIMENT
+Smart Rotator
 
-Can you show a user five comments that summarize the gist of an entire online discussion?
+An experiment in using matrix factorization to summarize online comment threads.
 
-That's what this experiment is about. Comments on news articles are often redundant, poorly organized and hard to navigate. As a result, many unabashed non-commenters (like me) rarely read them. The question is, can surfacing a small but representative subset of those comments through an interface like a rotator provide an accessible enough entry point that non-commenters might be encouraged to engage.
+How to run
 
-For this demo, we'll use a collection of several thousand comments -- in this case, a selection of responses to The New York Times' "High Time" opinion series, which argues for the legalization of marijuana -- and attempt to distill them automatically into representative themes.
+git checkout BLAH
+pip install -r requirements.txt
+python -mSimpleHTTPServer
+Go to index.html
 
-But how to select the comments? In an ideal world, human moderators would do it. But let's assume that's impractical for most organizations, so we want to try an automated system instead. We'll call it a "Smart Rotator."
+What is it?
 
-Let's start with the most naive way of getting a comment sample: random selection, which looks like this:
+I've disliked online comments ever since my reporting days. Even when they're not ignorant or offensive, they're too often redundant and boring. They're written by commenters, for commenters. And with rare exception, I can almost never summon up the interest to care about what individual commenters have to say, either as a journalist or a reader. Harsh maybe, but I suspect I'm not alone.
 
-DUMB_ROTATOR_HERE
+That said, I've always had an abstract interest in what the commenting community as a whole has to say about a given story. Minus the fringe points of view BLAH.
 
-Meh. Sometimes it shows variety, sometimes it's repetitive. Either way, we have no guarantee that the comments represented here represent anything about the discussion as a whole. It's a rotator, but it's dumb. We want something smarter -- maybe something conceptually similar to the visualization below, which shows public comments to the Federal Communiations Commission about net neutrality, by the data analysis company Quid.
+That's what this experiment is about: summarizing comment threads by surfacing popular arguments, then putting them in front of the reader in a way they can digest quickly. 
 
-VIZ HERE
+How does it work?
 
-I have no idea how that graph was produced, but it does a couple things that any smart rotator should aspire to. For one, it condenses a bunch of comments (more than 1.1 million) into a small number of themes. And second, it seems to identify those latent themes by looking at the contents of the comments themselves.
+The code uses non-negative matrix factorization to find cohesive topics in a thread of comments left on the Times' High Time opinion series, which advocates for the legalization of marijuana.
 
-What sorcery is this?! I'm not sure. But one way to achieve a similar effect is through the use of topic modeling. For our comment set, we can use a technique called Non-Negative Matrix Factorization to achieve a similar effect.
+Matrix factorization algorithms like NMF and singular value deocomposition have proven to be relatively simple and intuitive methods for distilling large sets of documents into smaller sets of topics. The approach in this experiment distills about 3,000 comments into TF-IDF weighted vectors containing the top 10,000 1- 2- and 3-grams in the comment corpus. We then use NMF to factorize that 3,000 x 10,000 matrix into 5-dimensional term/document and document/term matrices, representing key topics.
 
-You can read about the guts here, but essentially we can use NMF to distill our comments into a pre-defined number of topics based on the words they contain. If you look at the words that compose the topics, you can see some pretty clear patterns emerge:
+Those 5 topics are represented by collections of words, which look like this:
 
-TABLE
+      <table>
+        <thead>
+          <tr>
+            <th>Topic Number</th>
+            <th>Key Words</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>marijuana alcohol tobacco use alcohol tobacco harmful dangerous ...</td>
+            <td>Comments equating marijuana with alcohol and tobacco use</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>time past past time long end long past high time legalize long past time ...</td>
+            <td>Comments stating that the editorial is long overdue</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>agree editorial board editorial board agree editorial ban federal times ...</td>
+            <td>Comments addressing the editorial board directly</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>state states legal just think legal marijuana colorado ...</td>
+            <td>Comments that draw parallels between states like Colorado and federal policy</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>people drug drugs war tax prohibition law money cannabis ...</td>
+            <td>Comments making a point about the war on drugs</td>
+          </tr>
+        </tbody>
+      </table>
 
-EXPLANATION
+Individual comments are then assigned to particular topics, as appropriate, and presented to the user in the form of a rotator.
 
-SMART_ROTATOR_HERE
+Conclusion
 
-The differences aren't immediately obvious, but at least we can guarantee that the comments being displayed here represent a good cross-section of the subject matter represented in the comment set.
+At best, this experiment suggests that it's possible to extract common arguments from large comment threads.
 
-FUTURE WORK
+This kind of an approach could be used to build interactives around particular comment threads, or to summarize comments for reporters who don't want to wade through entire threads to see what readers have to say about their piece.
 
-If this demo proves anything, it's that simple modeling can be used to describe comments in vaguely useful ways. Personally, I'm not blown away by the results, but they suggest a few potential directions going forward.
-
-MODEL USEFULNESS, NOVELTY, ETC.
-
-COMBINE THAT WITH TOPIC MODELS
-
-NMF is just one of a large number of topic modeling and clustering algorithms that could be applied to a problem like this. It works reasonably well here because it assigns comments to thematic buckets based on the words they contain. That makes it a little smarter than systems based on simple document similarity metrics, which is great for finding near-duplicate comments but is perhaps less useful for discovering latent structure.
-
-Generative approches like LDA and LSA, or other discriminative algorithms like singular value decomposition, might also yield useful results but I didn't try them here. Those
+The rotator also exposes readers to comments passively, rather than requiring them to actively seek out the comments section of a story. Seeding rotators with high-value, representative comments would no doubt lead to a better user experience than a random smattering.

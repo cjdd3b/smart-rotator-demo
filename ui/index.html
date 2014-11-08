@@ -59,23 +59,15 @@
     </div>
 
     <div class="container">
-      <h1>Smart Rotator experiment</h1>
+      <h1 style="margin-bottom:20px;">Smart Rotator experiment</h1>
 
-      <p>Can you show a user five comments that summarize the gist of an entire online discussion?</p>
-
-      <p>That's what this experiment is about. Comments on news articles are often redundant, poorly organized and hard to navigate. As a result, many unabashed non-commenters (like me) rarely read them. The question is, can surfacing a small but representative subset of those comments through an interface like a rotator provide an accessible enough entry point that non-commenters might be encouraged to engage.</p>
-
-      <p>For this demo, we'll use a collection of several thousand comments -- in this case, a selection of responses to The New York Times' "High Time" opinion series, which argues for the legalization of marijuana -- and attempt to distill them automatically into representative themes.</p>
-
-      <p>But how to select the comments? In an ideal world, human moderators would do it. But let's assume that's impractical for most organizations, so we want to try an automated system instead. We'll call it a "Smart Rotator."</p>
-
-      <p>Let's start with the most naive way of getting a comment sample: random selection, which looks like this:</p>
+      <p>First up is our random comment rotator, which iterates over an arbitrary set of comments from our corpus. Sometimes it shows variety, sometimes it's repetitive. Either way, we have no guarantee that these comments represent the discussion. It's a rotator, and it's dumb.</p>
 
       <div class="rotator-container">
         <div id="dumbrotator" class="rotator"></div>
       </div>
 
-      <p>Meh. Sometimes it shows variety, sometimes it's repetitive. Either way, we have no guarantee that these comments represent the discussion. It's a rotator, but it's dumb. We want something smarter -- maybe something conceptually similar to the visualization below, which shows public comments to the Federal Communiations Commission about net neutrality, by the data analysis company Quid.</p>
+      <p>Meh.  We want something smarter -- maybe something conceptually similar to the visualization below, which shows public comments to the Federal Communiations Commission about net neutrality, by the data analysis company Quid.</p>
 
       <div class="image">
         <img src="assets/img/npr-example.png">
@@ -83,54 +75,13 @@
 
       <p>I have no idea how that graph was produced, but it does a couple things that any smart rotator should aspire to. For one, it condenses a bunch of comments (more than 1.1 million) into a small number of themes. And second, it seems to identify those latent themes by looking at the contents of the comments themselves.</p>
 
-      <p>What sorcery is this?! I'm not sure. But one way to achieve a similar effect is through the use of topic modeling. For our comment set, we can use a technique called Non-Negative Matrix Factorization to achieve a similar effect.</p>
-
-      <p>You can read about the guts here, but essentially we can use NMF to distill our comments into a pre-defined number of topics based on the words they contain. If you look at the words that compose the topics, you can see some pretty clear patterns emerge:</p>
-
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Topic Number</th>
-            <th>Key Words</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>marijuana alcohol tobacco use alcohol tobacco harmful dangerous ...</td>
-            <td>Comments equating marijuana with alcohol and tobacco use</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>time past past time long end long past high time legalize long past time ...</td>
-            <td>Comments stating that the editorial is long overdue</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>agree editorial board editorial board agree editorial ban federal times ...</td>
-            <td>Comments addressing the editorial board directly</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>state states legal just think legal marijuana colorado ...</td>
-            <td>Comments that draw parallels between states like Colorado and federal policy</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>people drug drugs war tax prohibition law money cannabis ...</td>
-            <td>Comments making a point about the war on drugs</td>
-          </tr>
-        </tbody>
-      </table>
-
-        <p>EXPLANATION</p>
+      <p>That's what our smart rotator below aims to do. It doesn't seem too different at first glance, but it's guaranteed to give users a broader sweep of the most common arguments in the thread.</p>
 
         <div class="rotator-container">
           <div id="smartrotator" class="rotator"></div>
         </div>
 
-        <p>The differences aren't immediately obvious, but at least we can guarantee that the comments being displayed here represent a good cross-section of the subject matter represented in the comment set.</p>
+      <p>At best, this suggests that it's possible to extract common arguments from large comment threads. This kind of an approach could be used to build interactives around particular comment threads, or to summarize comments for reporters who don't want to wade through entire threads to see what readers have to say about their piece.</p>
 
     </div> <!-- /container -->
 
