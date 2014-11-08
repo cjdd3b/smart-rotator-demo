@@ -6,10 +6,20 @@ An experiment in using matrix factorization to summarize online comment threads.
 How to run
 -----------
 
-git checkout BLAH
-pip install -r requirements.txt
-python -mSimpleHTTPServer
-Go to index.html
+If you just want to view the rotator:
+
+    git clone git@github.com:cjdd3b/smart-rotator-demo.git
+    cd ui
+    python -mSimpleHTTPServer
+
+Then open your browser and visit: http://127.0.0.1:8000/
+
+If you want to run the processor:
+
+    git clone git@github.com:cjdd3b/smart-rotator-demo.git
+    pip install -r requirements.txt
+    cd processor
+    python nmf.py 
 
 What is it?
 -----------
