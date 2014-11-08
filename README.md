@@ -24,7 +24,7 @@ If you want to run the processor:
 What is it?
 -----------
 
-I've been skeptical of online comments ever since my reporting days. Even when they're not ignorant or offensive, they're too often redundant and boring. They're written by commenters, for commenters. And with rare exception, I can almost never summon up the interest to care about what individual commenters have to say, either as a journalist or a reader. Harsh maybe, but I suspect I'm not alone.
+I haven't been a fan of online comments ever since my reporting days. Even when they're not ignorant or offensive, they're too often redundant and boring. They're written by commenters, for commenters. And with rare exception, I can almost never summon up the interest to care about what individual commenters have to say, either as a journalist or a reader. Harsh maybe, but I suspect I'm not alone.
 
 That said, I've always had an abstract interest in what the commenting community as a whole has to say about a given story -- in summarizing entire threads into their core arguments, so that readers, or reporters, could understand the gist of the comments without having to read through them all. That's what this experiment is about. 
 
