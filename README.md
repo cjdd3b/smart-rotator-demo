@@ -1,4 +1,5 @@
 Smart Rotator
+=============
 
 An experiment in using matrix factorization to summarize online comment threads.
 
@@ -10,6 +11,7 @@ python -mSimpleHTTPServer
 Go to index.html
 
 What is it?
+-----------
 
 I've disliked online comments ever since my reporting days. Even when they're not ignorant or offensive, they're too often redundant and boring. They're written by commenters, for commenters. And with rare exception, I can almost never summon up the interest to care about what individual commenters have to say, either as a journalist or a reader. Harsh maybe, but I suspect I'm not alone.
 
@@ -18,6 +20,7 @@ That said, I've always had an abstract interest in what the commenting community
 That's what this experiment is about: summarizing comment threads by surfacing popular arguments, then putting them in front of the reader in a way they can digest quickly. 
 
 How does it work?
+-----------------
 
 The code uses non-negative matrix factorization to find cohesive topics in a thread of comments left on the Times' High Time opinion series, which advocates for the legalization of marijuana.
 
@@ -65,6 +68,7 @@ Those 5 topics are represented by collections of words, which look like this:
 Individual comments are then assigned to particular topics, as appropriate, and presented to the user in the form of a rotator.
 
 Conclusion
+----------
 
 At best, this experiment suggests that it's possible to extract common arguments from large comment threads.
 
