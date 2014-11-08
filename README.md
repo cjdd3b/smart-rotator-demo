@@ -4,6 +4,7 @@ Smart Rotator
 An experiment in using matrix factorization to summarize online comment threads.
 
 How to run
+-----------
 
 git checkout BLAH
 pip install -r requirements.txt
@@ -28,42 +29,42 @@ Matrix factorization algorithms like NMF and singular value deocomposition have 
 
 Those 5 topics are represented by collections of words, which look like this:
 
-      <table>
-        <thead>
-          <tr>
-            <th>Topic Number</th>
-            <th>Key Words</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>marijuana alcohol tobacco use alcohol tobacco harmful dangerous ...</td>
-            <td>Comments equating marijuana with alcohol and tobacco use</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>time past past time long end long past high time legalize long past time ...</td>
-            <td>Comments stating that the editorial is long overdue</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>agree editorial board editorial board agree editorial ban federal times ...</td>
-            <td>Comments addressing the editorial board directly</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>state states legal just think legal marijuana colorado ...</td>
-            <td>Comments that draw parallels between states like Colorado and federal policy</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>people drug drugs war tax prohibition law money cannabis ...</td>
-            <td>Comments making a point about the war on drugs</td>
-          </tr>
-        </tbody>
-      </table>
+<table>
+<thead>
+  <tr>
+    <th>Topic Number</th>
+    <th>Key Words</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>1</td>
+    <td>marijuana alcohol tobacco use alcohol tobacco harmful dangerous ...</td>
+    <td>Comments equating marijuana with alcohol and tobacco use</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>time past past time long end long past high time legalize long past time ...</td>
+    <td>Comments stating that the editorial is long overdue</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>agree editorial board editorial board agree editorial ban federal times ...</td>
+    <td>Comments addressing the editorial board directly</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>state states legal just think legal marijuana colorado ...</td>
+    <td>Comments that draw parallels between states like Colorado and federal policy</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>people drug drugs war tax prohibition law money cannabis ...</td>
+    <td>Comments making a point about the war on drugs</td>
+  </tr>
+</tbody>
+</table>
 
 Individual comments are then assigned to particular topics, as appropriate, and presented to the user in the form of a rotator.
 
