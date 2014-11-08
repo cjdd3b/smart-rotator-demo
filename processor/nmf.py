@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.decomposition import NMF
 
 N_FEATURES = 10000 # Number of distinct words/phrases considered by the model
-N_TOPICS = 5 # Total number of topics the model should identify
+N_TOPICS = 5 # Total number of topics the model should identify. This is arbitrary. Can be set to anything.
 TOPIC_THRESHOLD = 0.3 # From 0 to 1, indicates how strongly a comment belongs with a topic
 
 if __name__ == '__main__':
