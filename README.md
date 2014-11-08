@@ -33,9 +33,9 @@ How does it work?
 
 The code uses [non-negative matrix factorization](http://en.wikipedia.org/wiki/Non-negative_matrix_factorization) to find cohesive topics in a thread of comments left on the Times' [High Time](http://www.nytimes.com/interactive/2014/07/27/opinion/sunday/high-time-marijuana-legalization.html) opinion series, which advocates for the legalization of marijuana.
 
-Matrix factorization algorithms like NMF and [singular value deocomposition](http://en.wikipedia.org/wiki/Singular_value_decomposition) have proven to be relatively simple and intuitive methods for distilling large sets of documents into smaller sets of topics. The approach in this experiment distills about 8,000 comments into TF-IDF weighted vectors containing the top 10,000 1- 2- and 3-grams in the comment corpus. We then use NMF to factorize that 8,000 x 10,000 matrix into 5-dimensional term/document and document/term matrices, representing key topics.
+Matrix factorization algorithms like NMF and [singular value deocomposition](http://en.wikipedia.org/wiki/Singular_value_decomposition) have proven to be relatively simple and intuitive methods for distilling large sets of documents into smaller sets of topics. The approach in this experiment converts about 8,000 comments into TF-IDF weighted vectors containing the top 10,000 1- 2- and 3-grams in the comment corpus. We then use NMF to factorize that 8,000 x 10,000 matrix into smaller matrices representing five key topics.
 
-Those 5 topics are represented by collections of words, which look like this:
+Those topics are represented by collections of words, which look like this:
 
 <table>
 <thead>
@@ -74,7 +74,7 @@ Those 5 topics are represented by collections of words, which look like this:
 </tbody>
 </table>
 
-Individual comments are then assigned to particular topics, as appropriate, and presented to the user in the form of a rotator.
+Individual comments are then assigned to particular topics, based on the words they contain, and presented to the user in the form of a rotator.
 
 Conclusion
 ----------
